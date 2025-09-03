@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Тестовое задание</title>
+    {% block stylesheets %}
+    <style>
+      html, body { height: 100%; }
+      body {
+        margin: 0; 
+        background: #CCC; 
+        color: #e5e7eb;
+        font-family: Roboto, Arial, sans-serif;
+        line-height: 1.5;
+      }
+      .center { 
+        min-height: 100vh; 
+        display: flex; 
+        align-items: center; 
+        justify-content: center; 
+        padding: 24px; 
+        }
+      .card {
+        background: #666; 
+        padding: 32px 40px; 
+        border-radius: 16px;
+        box-shadow: 0 10px 30px rgba(0,0,0,.2); 
+        text-align: center; 
+        max-width: 680px; 
+        width: 100%;
+      }
+      .title { 
+        font-size: clamp(22px, 3vw, 30px); 
+        margin: 0 0 16px; 
+        font-weight: 800; 
+        letter-spacing: .2px; 
+      }
+      .actions { 
+        display: flex; 
+        gap: 12px; 
+        justify-content: center; 
+        margin-top: 8px; 
+        flex-wrap: wrap; 
+      }
+      .btn {
+        display: inline-block; 
+        padding: 12px 20px; 
+        border-radius: 12px;
+        text-decoration: none; 
+        font-weight: 700; 
+        border: 1px solid rgba(255,255,255,.12);
+        transition: transform .12s ease, box-shadow .12s ease, opacity .12s ease;
+      }
+      .btn-primary { 
+        background: #2563eb; 
+        color: #fff; 
+        border-color: transparent; 
+      }
+      .btn:hover { 
+        transform: translateY(-1px); 
+        box-shadow: 0 8px 20px rgba(0,0,0,.25); 
+      }
+    </style>
+    {% endblock %}
+
+  </head>
+  <body>
+    {% block content %}
+      <main class="center">
+        <section class="card" role="region" aria-label="Стартовый экран">
+          <h1 class="title">Тестовое задание</h1>
+          <div>
+            <ul style="text-align:left">
+              <li>
+                  Реализовать все API endpoints и CRUD-операции из примера.
+              </li>
+              <li>
+                Админ-панель должна иметь авторизацию (логин/пароль).
+              </li>
+              <li>
+                  Каждая сущность должна быть создана через Doctrine и доступна в 
+                  EasyAdmin с базовыми операциями (создание, редактирование, удаление).
+              </li>
+              <li>
+                  API должен быть доступен и задокументирован через API Platform (Swagger UI).
+              </li>
+            </ul>
+          </div>
+          <div class="actions">
+            <a class="btn btn-primary" href="/admin">/admin</a>
+            <a class="btn btn-primary" href="/api">/api</a>
+          </div>
+        </section>
+      </main>
+    {% endblock %}
+  </body>
+</html>
+
