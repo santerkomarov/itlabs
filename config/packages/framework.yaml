@@ -8,9 +8,13 @@ framework:
     #esi: true
     #fragments: true
 
+    assets: ~
     asset_mapper:
-        paths:
-            - assets/
+        enabled: false
+
+    serializer:
+        default_context:
+            json_encode_options: !php/const JSON_UNESCAPED_UNICODE
 
 when@test:
     framework:

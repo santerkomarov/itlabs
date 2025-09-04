@@ -8,9 +8,20 @@ use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Serializer\Annotation\SerializedName;
 use App\Entity\Desk;
 
+use ApiPlatform\Metadata as API;
+
 #[ORM\Entity(repositoryClass: GuestRepository::class)]
 #[ORM\Table(name: 'guest')]
 #[ORM\Index(columns: ['desk_id'], name: 'idx_guest_desk')]
+
+#[API\ApiResource(
+    shortName: "GuestList",
+    operations: [
+        new API\GetCollection(uriTemplate: '/guest_lists'),
+        new API\Get(uriTemplate: '/guest_lists/{id}'),
+        new API\Patch(uriTemplate: '/guest_lists/{id}'),
+    ]
+)]
 
 class Guest
 {
@@ -20,7 +31,7 @@ class Guest
     #[ORM\Column(name: 'full_name', type: Types::STRING, length: 255)]
     private string $name = '';
 
-    #[ORM\Column(name: 'is_present', type: Types::BOOLEAN, options: ['default' => 0])]
+    #[ORM\Column(name: 'is_present', type: Types::BOOLEAN, options: [])]
     private bool $isPresent = false;
 
     // У Стола много Гостей
